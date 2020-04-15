@@ -2,7 +2,6 @@ package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +17,6 @@ public class EmployeeService {
 
     private List<Employee> employeeList = new CopyOnWriteArrayList<>();
 
-    //add an employee
-    // add to EmployeeList and pass data obj
     public Employee addEmployee(Employee employee){
         employee.setId(employeeIdCount);
         employeeList.add(employee);
@@ -27,13 +24,10 @@ public class EmployeeService {
         return employee;
     }
 
-    //obtain employee list
     public List<Employee> getEmployees(){
         return employeeList;
     }
 
-    //obtain a certain specific employee
-    //pass employeeId and retrieve from employeeList
     public Employee getEmployee(int employeeId){
         return employeeList
                 .stream()
@@ -69,7 +63,6 @@ public class EmployeeService {
 
     }
 
-    //delete an employee
     public void deleteEmployee(int employeeId){
         employeeList
                 .stream()

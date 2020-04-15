@@ -1,40 +1,58 @@
-/*package com.thoughtworks.springbootemployee.controller;
+package com.thoughtworks.springbootemployee.controller;
 
 import com.thoughtworks.springbootemployee.model.Employee;
-//import com.thoughtworks.springbootemployee.service.EmployeeService;
+import com.thoughtworks.springbootemployee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RestController;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    private List<Employee> employees = new ArrayList<>();
+    @Autowired
+    private EmployeeService employeeService;
 
+    //obtain employee list
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Employee> getAllEmployees(){
-        employees.add(new Employee(0, "Xiaoming", 20,"Male"));
-        employees.add(new Employee(1, "Xiaohong", 19,"Female"));
-        employees.add(new Employee(2 ,"Xiaozhi", 15,"Male"));
-        employees.add(new Employee(3 ,"Xiaogang", 16,"Male"));
-        employees.add(new Employee(4 ,"Xiaoxia", 15,"Female"));
-        return employees;
+    public List<Employee> getEmployees(){
+        return employeeService.getEmployees();
     }
 
 
+    //obtain a certain specific employee
+    @GetMapping(value = "/{employeeId}")
+    public Employee getEmployee(@PathVariable ("employeeId") int employeeId){
+        return employeeService.getEmployee(employeeId);
+    }
+
+    //screen all male employees
+    @GetMapping(params = "gender")
+    public Employee getEmployeeGender(@RequestParam String gender){
+        return employeeService.getEmployeeGender(gender);
+    }
+
+    //add an employee
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Employee createEmployee(Employee employee) {
-        employees.add(new Employee(2, "Xiaoming", 20 ,"Male"));
-        return employee;
+    public Employee addEmployee(@RequestBody Employee employee){
+        return employeeService.addEmployee(employee);
+    }
+
+    //update an employee
+    @PutMapping (value = "/{employeeId}")
+    public Employee updateEmployee (@PathVariable ("employeeId")
+                                                int employeeId, @RequestBody Employee employee){
+        return employeeService.updateEmployee(employeeId, employee);
+    }
+
+    //delete an employee
+    @DeleteMapping (value = "/{employeeId}")
+    public void deleteEmployee (@PathVariable ("employeeId") int employeeId){
+        employeeService.deleteEmployee(employeeId);
     }
 
 
-}*/
+
+
+}
