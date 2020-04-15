@@ -40,5 +40,13 @@ public class CompanyController {
         return companyService.updateCompany(companyId, company);
     }
 
+    //delete all employees belong to this company
+    @DeleteMapping (value = "/{companyId}")
+    public void deleteEmployee (@PathVariable ("companyId") int companyId){
+        companyService.deleteCompany(companyId);
+    }
+
+
+
 
 }
