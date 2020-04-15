@@ -12,11 +12,8 @@ public class CompanyService {
 
     @Autowired
     private CompanyService companyService;
-
     private int companyIdCount = 1;
-
     private List<Company> companyList = new CopyOnWriteArrayList<>();
-
 
     public Company addCompany(Company company){
         company.setId(companyIdCount);

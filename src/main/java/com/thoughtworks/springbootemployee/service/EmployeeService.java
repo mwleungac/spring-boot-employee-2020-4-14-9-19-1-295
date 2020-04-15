@@ -31,7 +31,7 @@ public class EmployeeService {
     public Employee getEmployee(int employeeId){
         return employeeList
                 .stream()
-                .filter(employee -> employee.getId() == employeeId) //if equal then pass
+                .filter(employee -> employee.getId() == employeeId)
                 .findFirst()
                 .get();
     }
@@ -39,7 +39,7 @@ public class EmployeeService {
     public Employee getEmployeeGender(String gender){
         return employeeList
                 .stream()
-                .filter(c -> c.getGender().equals(gender))
+                .filter(employed -> employed.getGender().equals(gender))
                 .findFirst()
                 .get();
     }
@@ -47,17 +47,18 @@ public class EmployeeService {
     public Employee updateEmployee(int employeeId, Employee employee){
         employeeList
                 .stream()
-                .forEach(c-> {
-                    if(c.getId() == employeeId){
-                        c.setAge(employee.getAge());
-                        c.setGender(employee.getGender());
-                        c.setName(employee.getName());
+                .forEach(employed -> {
+                    if(employed.getId() == employeeId){
+                        employed.setAge(employee.getAge());
+                        employed.setGender(employee.getGender());
+                        employed.setName(employee.getName());
+                        employed.setSalary(employee.getSalary());
                     }
 
                 });
         return employeeList
                 .stream()
-                .filter(c -> c.getId() == employeeId)
+                .filter(employed -> employed.getId() == employeeId)
                 .findFirst()
                 .get();
 
@@ -66,9 +67,9 @@ public class EmployeeService {
     public void deleteEmployee(int employeeId){
         employeeList
                 .stream()
-                .forEach(c -> {
-                    if(c.getId() == employeeId) {
-                        employeeList.remove(c);
+                .forEach(employed -> {
+                    if(employed.getId() == employeeId) {
+                        employeeList.remove(employed);
                     }
                 });
     }
