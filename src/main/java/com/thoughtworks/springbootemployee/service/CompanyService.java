@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 @Service
 public class CompanyService {
@@ -66,5 +67,11 @@ public class CompanyService {
                 });
     }
 
+    public List<Company> getCompanyPage(int page, int pageSize) {
+        return companyList.stream()
+                .skip(page * pageSize)
+                .limit(pageSize)
+                .collect(Collectors.toList());
+    }
 }
 

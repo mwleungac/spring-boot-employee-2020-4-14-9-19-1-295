@@ -48,4 +48,10 @@ public class CompanyController {
     }
 
 
+    //page query, page equals 1, pageSize equals 5
+    @GetMapping(params = {"page", "pageSize"})
+    public List<Company> getPageCompany(@RequestParam int page, @RequestParam int pageSize){
+        return companyService.getCompanyPage(page, pageSize);
+
+    }
 }

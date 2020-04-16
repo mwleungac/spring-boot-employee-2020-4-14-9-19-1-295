@@ -40,23 +40,6 @@ public class EmployeeController {
         return employeeService.getEmployeeGender(gender);
     }
 
-/*    //page query, page equals 1, pageSize equals 5
-    @GetMapping(params = {"page", "pageSize"})
-    public List<Employee> getPageEmployee(@RequestParam int page, @RequestParam int pageSize){
-        return employeeService.getEmployees(page, pageSize);
-    }*/
-
-
-    //page query, page equals 1, pageSize equals 5
-    @GetMapping(params = {"page", "pageSize"})
-    public List<Employee> getPageEmployee(@RequestParam int page, @RequestParam int pageSize){
-        return employeeService.getEmployeePage(page, pageSize);
-
-    }
-
-
-
-
     //add an employee
     @PostMapping
     public Employee addEmployee(@RequestBody Employee employee){
@@ -76,7 +59,11 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
     }
 
+    //page query, page equals 1, pageSize equals 5
+    @GetMapping(params = {"page", "pageSize"})
+    public List<Employee> getPageEmployee(@RequestParam int page, @RequestParam int pageSize){
+        return employeeService.getEmployeePage(page, pageSize);
 
-
+    }
 
 }
