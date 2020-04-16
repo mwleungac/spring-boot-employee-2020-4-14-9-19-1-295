@@ -5,7 +5,10 @@ import com.thoughtworks.springbootemployee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
+
+import static com.thoughtworks.springbootemployee.EmployeeFactory.createTestEmployees;
 
 @RestController
 @RequestMapping("/employees")
@@ -14,12 +17,16 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    //obtain employee list
+    @GetMapping
+    public List<Employee> getAllEmployees() {
+        return createTestEmployees();
+    }
+
+    /*//obtain employee list
     @GetMapping
     public List<Employee> getEmployees(){
         return employeeService.getEmployees();
-    }
-
+    }*/
 
     //obtain a certain specific employee
     @GetMapping(value = "/{employeeId}")

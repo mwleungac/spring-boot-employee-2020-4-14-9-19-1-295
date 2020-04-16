@@ -1,5 +1,6 @@
 package com.thoughtworks.springbootemployee.service;
 
+import com.thoughtworks.springbootemployee.EmployeeFactory;
 import com.thoughtworks.springbootemployee.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class EmployeeService {
 
     private int employeeIdCount = 1;
 
-    private List<Employee> employeeList = new CopyOnWriteArrayList<>();
+    private List<Employee> employeeList = EmployeeFactory.createTestEmployees();
 
     public Employee addEmployee(Employee employee){
         employee.setId(employeeIdCount);
@@ -36,6 +37,7 @@ public class EmployeeService {
                 .get();
     }
 
+    //TODO: check IsPresent
     public Employee getEmployeeGender(String gender){
         return employeeList
                 .stream()
@@ -46,7 +48,6 @@ public class EmployeeService {
 
     public Employee updateEmployee(int employeeId, Employee employee){
         employeeList
-                .stream()
                 .forEach(employed -> {
                     if(employed.getId() == employeeId){
                         employed.setAge(employee.getAge());
@@ -66,7 +67,6 @@ public class EmployeeService {
 
     public void deleteEmployee(int employeeId){
         employeeList
-                .stream()
                 .forEach(employed -> {
                     if(employed.getId() == employeeId) {
                         employeeList.remove(employed);
