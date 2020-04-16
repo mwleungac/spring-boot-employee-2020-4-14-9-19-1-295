@@ -5,10 +5,9 @@ import com.thoughtworks.springbootemployee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
-import static com.thoughtworks.springbootemployee.EmployeeFactory.createTestEmployees;
+import static com.thoughtworks.springbootemployee.repository.EmployeeRepository.createTestEmployees;
 
 @RestController
 @RequestMapping("/employees")

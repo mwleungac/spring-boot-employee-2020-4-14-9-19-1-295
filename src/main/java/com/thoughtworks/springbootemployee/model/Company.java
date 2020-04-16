@@ -4,14 +4,16 @@ public class Company {
     private int id;
     private String name;
     private String basicInfo;
-    private int employeeId;
 
-    public int getEmployeeId() {
-        return employeeId;
+
+    public Company(int id, String name, String basicInfo) {
+        this.id = id;
+        this.name = name;
+        this.basicInfo = basicInfo;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public Company(){
+
     }
 
     public String getBasicInfo() {

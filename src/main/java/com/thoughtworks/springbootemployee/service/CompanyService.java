@@ -1,6 +1,7 @@
 package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.model.Company;
+import com.thoughtworks.springbootemployee.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,10 @@ public class CompanyService {
 
     @Autowired
     private CompanyService companyService;
+
     private int companyIdCount = 1;
-    private List<Company> companyList = new CopyOnWriteArrayList<>();
+
+    private List<Company> companyList = CompanyRepository.createTestCompanies();
 
     public Company addCompany(Company company){
         company.setId(companyIdCount);
