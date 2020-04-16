@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -23,6 +24,10 @@ public class EmployeeService {
         employeeList.add(employee);
         employeeIdCount++;
         return employee;
+    }
+
+    public List<Employee> getEmployees(int page, int pageSize){
+        return employeeList;
     }
 
     public List<Employee> getEmployees(){
