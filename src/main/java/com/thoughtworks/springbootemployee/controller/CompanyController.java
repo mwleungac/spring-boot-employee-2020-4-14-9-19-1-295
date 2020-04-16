@@ -2,6 +2,7 @@ package com.thoughtworks.springbootemployee.controller;
 
 
 import com.thoughtworks.springbootemployee.model.Company;
+import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,8 +46,6 @@ public class CompanyController {
     public void deleteEmployee (@PathVariable ("companyId") int companyId){
         companyService.deleteCompany(companyId);
     }
-
-
 
 
 }

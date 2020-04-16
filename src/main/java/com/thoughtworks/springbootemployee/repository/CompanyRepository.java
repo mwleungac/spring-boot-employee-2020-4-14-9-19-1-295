@@ -13,4 +13,5 @@ public class CompanyRepository {
 
         return companies;
     }
+
 }

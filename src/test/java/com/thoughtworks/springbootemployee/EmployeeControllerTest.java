@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 
 
@@ -59,6 +62,26 @@ public class EmployeeControllerTest {
     }
 
     @Test
+    public void shouldFindEmployeeByPage() {
+        MockMvcResponse response = given().contentType(ContentType.JSON)
+                .params("page", 1)
+                .params("pageSize", 5)
+                .when()
+                .get("/employees");
+
+        Assert.assertEquals(200, response.getStatusCode());
+
+        List<Employee> employees = response.getBody().as(new TypeRef<List<Employee>>() {
+            @Override
+            public Type getType() {
+                return super.getType();
+            }
+        });
+        Assert.assertEquals(5, employees.size());
+
+    }
+
+    @Test
     public void shouldAddEmployee() {
         Employee employee = new Employee(3,"XX",30,"male",2000);
 
@@ -99,4 +122,6 @@ public class EmployeeControllerTest {
         Assert.assertEquals(3, employee.getId());
         Assert.assertEquals("XXX", employee.getName());
     }
+
+
 }

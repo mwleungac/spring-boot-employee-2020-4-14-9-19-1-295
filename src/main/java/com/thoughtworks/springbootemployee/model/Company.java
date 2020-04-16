@@ -1,9 +1,13 @@
 package com.thoughtworks.springbootemployee.model;
 
+import java.util.List;
+
 public class Company {
     private int id;
     private String name;
     private String basicInfo;
+    private String employeeId;
+    private List<Employee> employeeList;
 
 
     public Company(int id, String name, String basicInfo) {

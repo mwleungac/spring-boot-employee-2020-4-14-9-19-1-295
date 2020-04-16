@@ -1,6 +1,7 @@
 package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.model.Company;
+import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class CompanyService {
                 .stream()
                 .filter(company -> company.getId() == companyId) //if equal then pass
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 
     public Company updateCompany(int companyId, Company company){
@@ -51,7 +52,7 @@ public class CompanyService {
                 .stream()
                 .filter(c -> c.getId() == companyId)
                 .findFirst()
-                .get();
+                .orElse(null);
 
     }
 
@@ -64,5 +65,6 @@ public class CompanyService {
                     }
                 });
     }
+
 }
 

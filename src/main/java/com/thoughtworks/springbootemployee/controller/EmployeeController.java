@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.thoughtworks.springbootemployee.repository.EmployeeRepository.createTestEmployees;
 
@@ -39,10 +40,18 @@ public class EmployeeController {
         return employeeService.getEmployeeGender(gender);
     }
 
-    //page query, page equals 1, pageSize equals 5
+/*    //page query, page equals 1, pageSize equals 5
     @GetMapping(params = {"page", "pageSize"})
     public List<Employee> getPageEmployee(@RequestParam int page, @RequestParam int pageSize){
         return employeeService.getEmployees(page, pageSize);
+    }*/
+
+
+    //page query, page equals 1, pageSize equals 5
+    @GetMapping(params = {"page", "pageSize"})
+    public List<Employee> getPageEmployee(@RequestParam int page, @RequestParam int pageSize){
+        return employeeService.getEmployeePage(page, pageSize);
+
     }
 
 

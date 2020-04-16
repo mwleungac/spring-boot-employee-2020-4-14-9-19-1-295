@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.thoughtworks.springbootemployee.repository.EmployeeRepository.createTestEmployees;
 
 @Service
 public class EmployeeService {
@@ -37,16 +40,15 @@ public class EmployeeService {
                 .stream()
                 .filter(employee -> employee.getId() == employeeId)
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 
-    //TODO: check IsPresent
     public Employee getEmployeeGender(String gender){
         return employeeList
                 .stream()
                 .filter(employed -> employed.getGender().equals(gender))
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 
     public Employee updateEmployee(int employeeId, Employee employee){
@@ -64,7 +66,7 @@ public class EmployeeService {
                 .stream()
                 .filter(employed -> employed.getId() == employeeId)
                 .findFirst()
-                .get();
+                .orElse(null);
 
     }
 
@@ -75,5 +77,12 @@ public class EmployeeService {
                         employeeList.remove(employed);
                     }
                 });
+    }
+
+    public List<Employee> getEmployeePage(int page, int pageSize) {
+        return employeeList.stream()
+                .skip(page * pageSize)
+                .limit(pageSize)
+                .collect(Collectors.toList());
     }
 }

@@ -59,4 +59,30 @@ public class CompanyControllerTest {
         Assert.assertEquals(3, company.getId());
         Assert.assertEquals("XX", company.getName());
     }
+
+    @Test
+    public void shouldUpdateCompany() {
+        Company company = new Company(3,"XXX","XXX");
+
+        MockMvcResponse response = given().contentType(ContentType.JSON)
+                .body(company)
+                .when()
+                .post("/companies");
+
+        Assert.assertEquals(200, response.getStatusCode());
+
+        Company company1 = response.getBody().as(Company.class);
+        Assert.assertEquals(3, company.getId());
+        Assert.assertEquals("XXX", company.getName());
+    }
+
+    @Test
+    public void shouldDeleteCompany() {
+        MockMvcResponse response = given().contentType(ContentType.JSON)
+                .when()
+                .delete("/companies/3");
+
+        Assert.assertEquals(200, response.getStatusCode());
+
+    }
 }
