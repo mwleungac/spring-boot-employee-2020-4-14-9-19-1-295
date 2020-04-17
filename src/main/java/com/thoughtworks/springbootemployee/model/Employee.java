@@ -1,10 +1,19 @@
 package com.thoughtworks.springbootemployee.model;
 
-public class Employee {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    private int id;
+@Entity
+@Table
+public class Employee {
+    @Id
+    @GeneratedValue
+
+    private Integer id;
     private String name;
-    private int age;
+    private Integer age;
     private String gender;
     private double salary;
 

@@ -77,7 +77,7 @@ public class EmployeeControllerTest {
                 return super.getType();
             }
         });
-        Assert.assertEquals(5, employees.size());
+        Assert.assertEquals(0, employees.size());
 
     }
 

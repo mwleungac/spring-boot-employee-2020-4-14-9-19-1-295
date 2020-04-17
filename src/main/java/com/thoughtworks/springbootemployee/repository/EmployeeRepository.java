@@ -1,13 +1,14 @@
 package com.thoughtworks.springbootemployee.repository;
 
 import com.thoughtworks.springbootemployee.model.Employee;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
+import javax.xml.ws.RespectBinding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Repository
 public class EmployeeRepository {
 
     public static List<Employee> createTestEmployees() {
