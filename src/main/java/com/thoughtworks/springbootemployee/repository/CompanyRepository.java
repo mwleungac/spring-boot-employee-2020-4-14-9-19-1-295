@@ -40,19 +40,19 @@ public class CompanyRepository {
                 .orElse(null);
     }
 
-    //@TODO: naming
+
     public Company updateCompany(int companyId, Company company) {
         companyList
-                .forEach(c -> {
-                    if (c.getId() == companyId) {
-                        c.setName(company.getName());
-                        c.setBasicInfo(company.getBasicInfo());
+                .forEach(comp -> {
+                    if (comp.getId() == companyId) {
+                        comp.setName(company.getName());
+                        comp.setBasicInfo(company.getBasicInfo());
                     }
 
                 });
         return companyList
                 .stream()
-                .filter(c -> c.getId() == companyId)
+                .filter(comp -> comp.getId() == companyId)
                 .findFirst()
                 .orElse(null);
 
@@ -60,9 +60,9 @@ public class CompanyRepository {
 
     public void deleteCompany(int companyId) {
         companyList
-                .forEach(c -> {
-                    if (c.getId() == companyId) {
-                        companyList.remove(c);
+                .forEach(comp -> {
+                    if (comp.getId() == companyId) {
+                        companyList.remove(comp);
                     }
                 });
     }
