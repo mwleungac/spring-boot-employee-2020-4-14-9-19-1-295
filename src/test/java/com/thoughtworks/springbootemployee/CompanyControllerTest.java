@@ -46,7 +46,7 @@ public class CompanyControllerTest {
 
     @Test
     public void shouldAddCompany() {
-        Company company = new Company(3,"XX","XX");
+        Company company = new Company();
 
         MockMvcResponse response = given().contentType(ContentType.JSON)
                 .body(company)
@@ -62,7 +62,7 @@ public class CompanyControllerTest {
 
     @Test
     public void shouldUpdateCompany() {
-        Company company = new Company(3,"XXX","XXX");
+        Company company = new Company();
 
         MockMvcResponse response = given().contentType(ContentType.JSON)
                 .body(company)
