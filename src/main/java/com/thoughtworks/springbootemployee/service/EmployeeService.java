@@ -31,7 +31,8 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Integer employeeId, Employee employee) {
-        employeeRepository.findById(employeeId);
+        employeeRepository.findById(employeeId).orElse(null);
+        employeeRepository.save(employee);
         return employee;
     }
 
