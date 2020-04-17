@@ -83,7 +83,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void shouldAddEmployee() {
-        Employee employee = new Employee(3,"XX",30,"male",2000);
+        Employee employee = new Employee(3,"XX",30,"male",2000, 1);
 
         MockMvcResponse response = given().contentType(ContentType.JSON)
                 .body(employee)
@@ -109,7 +109,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void shouldUpdateEmployee() {
-        Employee employee = new Employee(3,"XXX",30,"male",2000);
+        Employee employee = new Employee(3,"XXX",30,"male",2000,1);
 
         MockMvcResponse response = given().contentType(ContentType.JSON)
                 .body(employee)

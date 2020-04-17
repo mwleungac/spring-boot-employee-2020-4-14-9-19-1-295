@@ -13,27 +13,30 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public Employee getEmployee(int employeeId) {
-        return  employeeRepository.getEmployee(employeeId);
+    public List<Employee> getAll() {
+        return employeeRepository.findAll();
     }
 
-    public Employee getEmployeeGender(String gender) {
-        return employeeRepository.getEmployeeGender(gender);
+    public List<Employee> getEmployeeGender(String gender) {
+        return employeeRepository.findAllByGender(gender);
     }
+
+    public Employee getEmployee(Integer employeeId) {
+        return employeeRepository.findById(employeeId).orElse(null);
+    }
+
 
     public Employee addEmployee(Employee employee) {
-        return employeeRepository.addEmployee(employee);
+        return employeeRepository.save(employee);
     }
 
-    public Employee updateEmployee(int employeeId, Employee employee) {
-        return employeeRepository.updateEmployee(employeeId, employee);
+    public Employee updateEmployee(Integer employeeId, Employee employee) {
+        employeeRepository.findById(employeeId);
+        return employee;
     }
 
-    public void deleteEmployee(int employeeId) {
-        employeeRepository.deleteEmployee(employeeId);
+    public void deleteEmployee(Integer employeeId) {
+        employeeRepository.deleteById(employeeId);
     }
 
-    public List<Employee> getEmployeePage(int page, int pageSize) {
-        return employeeRepository.getEmployeePage(page, pageSize);
-    }
 }

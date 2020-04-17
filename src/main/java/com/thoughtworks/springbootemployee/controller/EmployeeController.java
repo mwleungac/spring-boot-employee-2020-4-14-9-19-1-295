@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.thoughtworks.springbootemployee.repository.EmployeeRepository.createTestEmployees;
-
 
 @RestController
 @RequestMapping("/employees")
@@ -19,16 +17,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping
-    public List<Employee> getAllEmployees() {
-        return createTestEmployees();
-    }
-
-    /*//obtain employee list
+    //obtain employee list
     @GetMapping
     public List<Employee> getEmployees(){
-        return employeeService.getEmployees();
-    }*/
+        return employeeService.getAll();
+    }
 
     //obtain a certain specific employee
     @GetMapping(value = "/{employeeId}")
@@ -38,7 +31,7 @@ public class EmployeeController {
 
     //screen all male employees
     @GetMapping(params = "gender")
-    public Employee getEmployeeGender(@RequestParam String gender){
+    public List<Employee> getEmployeeGender(@RequestParam String gender){
         return employeeService.getEmployeeGender(gender);
     }
 
@@ -61,11 +54,5 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
     }
 
-    //page query, page equals 1, pageSize equals 5
-    @GetMapping(params = {"page", "pageSize"})
-    public List<Employee> getPageEmployee(@RequestParam int page, @RequestParam int pageSize){
-        return employeeService.getEmployeePage(page, pageSize);
-
-    }
 
 }
