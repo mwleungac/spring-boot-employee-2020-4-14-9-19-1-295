@@ -27,4 +27,15 @@ public class ParkingBoyController {
         return parkingBoyService.addParkingBoy(parkingBoy);
     }
 
+    @PutMapping (value = "/{parkingBoyId}")
+    public ParkingBoy updateParkingBoy (@PathVariable ("parkingBoyId")
+                                            int parkingBoyId, @RequestBody ParkingBoy parkingBoy){
+        return parkingBoyService.updateParkingBoy(parkingBoyId, parkingBoy);
+    }
+
+    @DeleteMapping (value = "/{parkingBoyId}")
+    public void deleteParkingBoy (@PathVariable ("parkingBoyId") int parkingBoyId){
+        parkingBoyService.deleteParkingBoy(parkingBoyId);
+    }
+
 }

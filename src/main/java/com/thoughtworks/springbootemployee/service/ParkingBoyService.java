@@ -22,4 +22,14 @@ public class ParkingBoyService {
     public ParkingBoy addParkingBoy(ParkingBoy parkingBoy) {
         return parkingBoyRepository.save(parkingBoy);
     }
+
+    public ParkingBoy updateParkingBoy(int parkingBoyId, ParkingBoy parkingBoy) {
+        parkingBoyRepository.findById(parkingBoyId).orElse(null);
+        parkingBoyRepository.save(parkingBoy);
+        return parkingBoy;
+    }
+
+    public void deleteParkingBoy(int parkingBoyId) {
+        parkingBoyRepository.deleteById(parkingBoyId);
+    }
 }
