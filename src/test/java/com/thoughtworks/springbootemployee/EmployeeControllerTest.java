@@ -42,7 +42,7 @@ public class EmployeeControllerTest {
         Assert.assertEquals(200, response.getStatusCode());
 
         Employee employee = response.getBody().as(Employee.class);
-        Assert.assertEquals(1, employee.getId());
+        Assert.assertEquals(1, (int) employee.getId());
         Assert.assertEquals("xiaoming", employee.getName());
 
     }
@@ -93,7 +93,7 @@ public class EmployeeControllerTest {
         Assert.assertEquals(200, response.getStatusCode());
 
         Employee employee1 = response.getBody().as(Employee.class);
-        Assert.assertEquals(3, employee.getId());
+        Assert.assertEquals(3, (int) employee.getId());
         Assert.assertEquals("XX", employee.getName());
     }
 
@@ -119,7 +119,7 @@ public class EmployeeControllerTest {
         Assert.assertEquals(200, response.getStatusCode());
 
         Employee employee1 = response.getBody().as(Employee.class);
-        Assert.assertEquals(3, employee.getId());
+        Assert.assertEquals(3, (int) employee.getId());
         Assert.assertEquals("XXX", employee.getName());
     }
 
