@@ -48,5 +48,10 @@ public class CompanyController {
     public void deleteEmployee (@PathVariable ("companyId") int companyId){
         companyService.deleteCompany(companyId);
     }
+
+    @GetMapping("/{companyId}/employees")
+    public List<Employee> getEmployees(@PathVariable Integer companyId) {
+        return companyService.getEmployees(companyId);
+    }
     
 }

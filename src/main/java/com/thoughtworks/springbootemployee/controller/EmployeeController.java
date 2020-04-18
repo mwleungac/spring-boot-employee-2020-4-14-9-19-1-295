@@ -54,5 +54,10 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
     }
 
+    @GetMapping(value = "", params = {"page", "pageSize"})
+    public List<Employee> getPageEmployees(@RequestParam int page, @RequestParam int pageSize) {
+        return employeeService.getAll(1,5);
+    }
+
 
 }

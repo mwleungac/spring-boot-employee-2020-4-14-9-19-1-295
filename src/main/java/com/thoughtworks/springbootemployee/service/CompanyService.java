@@ -38,5 +38,9 @@ public class CompanyService {
         companyRepository.deleteById(companyId);
     }
 
+    public List<Employee> getEmployees(Integer companyId) {
+        Company company = companyRepository.findById(companyId).orElse(null);
+        return company.getEmployeeList();
+    }
 }
 
